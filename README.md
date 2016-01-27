@@ -7,10 +7,12 @@
 * Use Active Record callbacks
 
 ## Summary
+We're going to build a [Bitly][] clone.  What does Bitly do?  URLs can be really long, which makes them difficult to share.  Bitly provides a service that creates shorter, friendlier URLs.  When users visit a shortened Bitly URL, the Bitly server responds by telling the browser to redirect to the original, longer URL.
 
-We're going to build a simple link shortener, a la [bitly][].
+Try it.  Click on this Bitly link:  [http://bit.ly/1dKgi4T](http://bit.ly/1dKgi4T).
 
-You'll have one model `Url`, which is a list of URLs that people have entered.
+While building this web application, our focus is going to be on events related to the life cycle of an Active Record model.  What happens when when an Active Record model is instantiated, saved, validated, etc.?  We'll be using Active Record [callbacks][rails guides callbacks] around these life cycle events to control our objects and their data.
+
 
 ## Releases
 
@@ -160,7 +162,11 @@ You may find them easier to memorize if you have help from [HTTP status cats][]
 * [HTTP status codes][]
 * [HTTP status cats][]
 
+
 [bitly]: http://bitly.com/
+[rails guides callbacks]: http://guides.rubyonrails.org/active_record_callbacks.html
+
+
 [ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html
 [URI module]: http://www.ruby-doc.org/stdlib-1.9.3/libdoc/uri/rdoc/URI.html
 [custom validations]: http://guides.rubyonrails.org/active_record_validations.html#performing-custom-validations
