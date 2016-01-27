@@ -16,7 +16,7 @@ You'll have one model `Url`, which is a list of URLs that people have entered.
 
 ### Release 0: Simple Shortener
 
-Start with the empty Sinatra skeleton in `source`.
+Start with the empty Sinatra skeleton.
 
 We have one resource: `Urls`.  For our controllers, we have a URL that lists
 all our `Url` objects and another URL that, when POSTed to, creates a `Url`
