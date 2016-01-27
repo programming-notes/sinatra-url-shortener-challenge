@@ -11,6 +11,8 @@ We're going to build a [Bitly][] clone.  What does Bitly do?  URLs can be really
 
 Try it.  Click on this Bitly link:  [http://bit.ly/1dKgi4T](http://bit.ly/1dKgi4T).
 
+What happened?  If we open the Network tab of the Developer Tools, and visit the Bitly link again, we'll see that the response from the Bitly server has a status of [301][wikipedia 301].  If we look a little deeper and look at the response headers, we'll see that a location header specifies for the browser where to go.
+
 While building this web application, our focus is going to be on events related to the life cycle of an Active Record model.  What happens when when an Active Record model is instantiated, saved, validated, etc.?  We'll be using Active Record [callbacks][rails guides callbacks] around these life cycle events to control our objects and their data.
 
 
@@ -165,6 +167,7 @@ You may find them easier to memorize if you have help from [HTTP status cats][]
 
 [bitly]: http://bitly.com/
 [rails guides callbacks]: http://guides.rubyonrails.org/active_record_callbacks.html
+[wikipedia 301]: https://en.wikipedia.org/wiki/HTTP_301
 
 
 [ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html
