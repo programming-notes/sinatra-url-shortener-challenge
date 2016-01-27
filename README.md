@@ -1,4 +1,4 @@
-# Sinatra Url Shortener
+# URL Shortener
 
 ## Learning Competencies
 
