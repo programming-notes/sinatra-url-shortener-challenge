@@ -27,13 +27,15 @@ We'll need one resource for our application:  a `Url` model.  Our model should h
 *Note:*  The necessary route handlers have been setup for us, but we need to complete them.
 
 
+### Release 1:  Count Requests for each Short URLs
+Users are happy with our URL shortening service, but they have requested an additional feature.  When they share a shortened link, they want to know how many times the shortened link is used.
 
-### Release 1:  Add a Counter!
+We need to update our application to maintain a count of how many times it receives a request for each short URL.  To complete this feature, we'll need to ...
 
-Add a `click_count` field to your `urls` table, which keeps track of how many
-times someone has visited the shortened URL.  Add code to the appropriate place
-in your controller code so that any time someone hits a short URL the counter
-for the appropriate `Url` is incremented by 1.
+- update our database table to keep track of visits for each URL.
+- update the appropriate route handler, so that any time a short URL is requested, the counter for the appropriate `Url` is updated.
+- update the homepage to display the number of times each short URL was requested ([mockup](readme-assets/counter.png)).
+
 
 ### Release 2: Add Validations
 
