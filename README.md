@@ -14,37 +14,19 @@ While building this web application, our focus is going to be on events related 
 Each HTTP transaction must return a status code.  One we're probably familiar with is `404` (Not Found!).  As we building our application, we should investigate which HTTP codes are sent for a static page and for a redirect.  Spend some time getting to know [HTTP status codes][]. It's common to be asked about them in interviews.  It might be easier to memorize them with help from [HTTP status cats][].
 
 
-
 ## Releases
-### Release 0: Simple Shortener
+### Release 0: Build the MVP
+![mvp animation](readme-assets/mvp-animation.gif)  
+*Figure 1*.  Mockup of URL Shortener application.
 
-Start with the empty Sinatra skeleton.
 
-We have one resource: `Urls`.  For our controllers, we have a URL that lists
-all our `Url` objects and another URL that, when POSTed to, creates a `Url`
-object.
+In Figure 1 we have an animation that demonstrates how our application works.  On the homepage is a form where users input a URL.  When the form is submitted, our application persists an object representing the URL.  Objects representing submitted URLs are displayed on the homepage—both the original and shortened URLs.  When a user visits the shortened URL, they are redirected to the original URL.
 
-We'll also need a URL that redirects us to the full (unshortened) URL.  If
-you've never used bitly, use it now to get a feel for how it works.
+We'll need one resource for our application:  a `Url` model.  Our model should have two attributes:  a long URL and a short URL.  We'll be creating our `Url` objects based on user input.  Users will provide us with the long URL.  We'll need to create the short URL—use a `before_save` callback in the `Url` model.
 
-The controller methods should look like this:
+*Note:*  The necessary route handlers have been setup for us, but we need to complete them.
 
-```ruby
-get '/' do
-  # let user create new short URL, display a list of shortened URLs
-end
 
-post '/urls' do
-  # create a new Url
-end
-
-# e.g., /q6bda
-get '/:short_url' do
-  # redirect to appropriate "long" URL
-end
-```
-
-Use a `before_save` callback in the `Url` model to generate the short URL.
 
 ### Release 1:  Add a Counter!
 
