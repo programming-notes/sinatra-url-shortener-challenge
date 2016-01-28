@@ -10,8 +10,12 @@ What happened?  If we open the Network tab of the Developer Tools, and visit the
 While building this web application, our focus is going to be on events related to the life cycle of an Active Record model.  What happens when when an Active Record model is instantiated, saved, validated, etc.?  We'll be using Active Record [callbacks][rails guides callbacks] around these life cycle events to control our objects and their data.
 
 
-## Releases
+### HTTP Status Codes
+Each HTTP transaction must return a status code.  One we're probably familiar with is `404` (Not Found!).  As we building our application, we should investigate which HTTP codes are sent for a static page and for a redirect.  Spend some time getting to know [HTTP status codes][]. It's common to be asked about them in interviews.  It might be easier to memorize them with help from [HTTP status cats][].
 
+
+
+## Releases
 ### Release 0: Simple Shortener
 
 Start with the empty Sinatra skeleton.
@@ -134,16 +138,6 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
   </tr>
 </table>
 
-### Learning your HTTP status codes
-
-Each HTTP transaction **MUST** return a status code.  The one you're familiar
-with is `404` (Not Found!).  You should investigate your app or watch the web
-server logs from Sinatra and see which HTTP codes it sends for a static page,
-or for a redirect.  Spend some time getting to know your [HTTP status codes].
-You will, **very likely** be asked about them in interviews as it's a way to
-separate the clowns from the people you want to hire.
-
-You may find them easier to memorize if you have help from [HTTP status cats][]
 
 ## Resources
 
@@ -160,6 +154,8 @@ You may find them easier to memorize if you have help from [HTTP status cats][]
 
 
 [bitly]: http://bitly.com/
+[HTTP status codes]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+[HTTP status cats]: http://httpcats.herokuapp.com/
 [rails guides callbacks]: http://guides.rubyonrails.org/active_record_callbacks.html
 [wikipedia 301]: https://en.wikipedia.org/wiki/HTTP_301
 
@@ -171,5 +167,3 @@ You may find them easier to memorize if you have help from [HTTP status cats][]
 [save]: http://apidock.com/rails/ActiveRecord/Base/save
 [valid invalid]: http://guides.rubyonrails.org/active_record_validations.html#valid-questionmark-and-invalid-questionmark
 [errors]: http://guides.rubyonrails.org/active_record_validations.html#validations-overview-errors
-[HTTP status codes]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
-[HTTP status cats]: http://httpcats.herokuapp.com/
