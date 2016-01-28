@@ -1,11 +1,5 @@
 # URL Shortener
 
-## Learning Competencies
-
-* Map the flow of data through a web application
-* Use redirect
-* Use Active Record callbacks
-
 ## Summary
 We're going to build a [Bitly][] clone.  What does Bitly do?  URLs can be really long, which makes them difficult to share.  Bitly provides a service that creates shorter, friendlier URLs.  When users visit a shortened Bitly URL, the Bitly server responds by telling the browser to redirect to the original, longer URL.
 
