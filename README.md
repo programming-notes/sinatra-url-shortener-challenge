@@ -37,47 +37,17 @@ We need to update our application to maintain a count of how many times it recei
 - update the homepage to display the number of times each short URL was requested ([mockup](readme-assets/counter.png)).
 
 
-### Release 2: Add Validations
+### Release 2:  Validate URLs
+We've received some user feedback saying that our short links are broken, sending users to bad URLs.  We've looked into the issue and noticed that users are supplying incomplete URLs.  For example, the user submits "google.com" rather than "http://google.com".  In other words, the problem is with the user input, but it looks like the problem is on our end, and of course, we need to do something about it.
 
-Add a validation to your `Url` model so that only `Urls` with valid URLs get
-saved to the database.  Read up on [ActiveRecord validations][]
+If a user submits an invalid URL, we don't want to provide them with a short URL; instead, we want to alert them to the problem and provide the opportunity to correct the input (see Figure 2).  To accomplish this, we'll add an [Active Record validation][ActiveRecord validations] to our `Url` model.  There are different approaches to determining what constitutes a valid URL.  For our purposes, we'll say that a valid URL begins with "http://" or "https://".
 
-What constitutes a "valid URL" is up to you.  It's a sliding scale, from
-validations that would permit lots of invalid URLs to validations that might
-reject lots of valid URLs.  When you get into it you'll see that expressing the
-fact "x is a valid URL" in Ruby Land or SQL Land is never perfect.
+![error animation](readme-assets/show-error-animation.gif)  
+*Figure 2*.  Alerting users that a URL is invalid.
 
-For example, the valid URL could range across:
 
-**A valid URL is...**
+As we've learned in [previous challenges][validations intro challenge], when we attempt to save, create, or update an Active Record object, Active Record will first validate the object.  If any validations fail, the object is invalid, and Active Record will not try to write to the database.  But, for each failing validation, Active Record will note the failure in the object's [errors][].  We should leverage our understanding of validations and errors to update the route handler in which we persist `Url` objects.
 
-* Any non-empty string
-* Any non-empty string that starts with "http://" or "https://"
-* Any string that the [Ruby URI module][URI module] says is valid
-* Any URL-looking thing which responds to a HTTP request, i.e., we actually check to see if the URL is accessible via HTTP
-
-Some of these are easily expressible in SQL Land.  Some of these are hard to
-express in SQL Land, but ActiveRecord comes with pre-built validation helpers
-that make it easy to express in Ruby Land.  Others require [custom
-validations][] that express logic unique to our application domain.
-
-The rule of thumb is that where we can, we want to always express constraints
-in Ruby Land and also express them in SQL Land where feasible.
-
-### Release 3: Add Error Handling
-
-When you try to save (create or update) an ActiveRecord object that has invalid
-data, ActiveRecord will fail.  Some methods like `create!` and `save!` throw an
-exception.  Others like `create`  (without the `!` bang) return the  resulting
-object whether the object was saved successfully to the database or not, while
-`save` will return `false` if perform_validation is true and any validations
-fail.  See [create][] and [save][] for more information.
-
-You can always call [valid? or invalid?][valid invalid] on an ActiveRecord
-object to see whether its data is valid or invalid.
-
-Use this and the [errors][] method to display a helpful error message if a user
-enters an invalid URL, giving them the opportunity to correct their error.
 
 ## Optimize Your Learning
 
@@ -137,17 +107,19 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
 * [HTTP status cats][]
 
 
+[ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html
 [bitly]: http://bitly.com/
+[errors]: http://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errorsactive_record_validations.html#validations-overview-errors
 [HTTP status codes]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 [HTTP status cats]: http://httpcats.herokuapp.com/
 [rails guides callbacks]: http://guides.rubyonrails.org/active_record_callbacks.html
+[validations intro challenge]: ../../../active-record-intro-validations-challenge
 [wikipedia 301]: https://en.wikipedia.org/wiki/HTTP_301
 
 
-[ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html
 [URI module]: http://www.ruby-doc.org/stdlib-1.9.3/libdoc/uri/rdoc/URI.html
 [custom validations]: http://guides.rubyonrails.org/active_record_validations.html#performing-custom-validations
 [create]: http://apidock.com/rails/ActiveRecord/Base/create/class
 [save]: http://apidock.com/rails/ActiveRecord/Base/save
 [valid invalid]: http://guides.rubyonrails.org/active_record_validations.html#valid-questionmark-and-invalid-questionmark
-[errors]: http://guides.rubyonrails.org/active_record_validations.html#validations-overview-errors
+
