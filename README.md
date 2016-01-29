@@ -49,20 +49,6 @@ If a user submits an invalid URL, we don't want to provide them with a short URL
 As we've learned in [previous challenges][validations intro challenge], when we attempt to save, create, or update an Active Record object, Active Record will first validate the object.  If any validations fail, the object is invalid, and Active Record will not try to write to the database.  But, for each failing validation, Active Record will note the failure in the object's [errors][].  We should leverage our understanding of validations and errors to update the route handler in which we persist `Url` objects.
 
 
-## Resources
-
-* [Bit.ly, a url shortening service][bitly]
-* [ActiveRecord validations][]
-* [URI module][]
-* [Active record custom validations][custom validations]
-* [ActiveRecord create][create]
-* [ActiveRecord save][save]
-* [ActiveRecord's valid? &amp; invalid?][valid invalid]
-* [ActiveRecord's errors object][errors]
-* [HTTP status codes][]
-* [HTTP status cats][]
-
-
 [ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html
 [bitly]: http://bitly.com/
 [errors]: http://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errorsactive_record_validations.html#validations-overview-errors
@@ -72,10 +58,4 @@ As we've learned in [previous challenges][validations intro challenge], when we 
 [validations intro challenge]: ../../../active-record-intro-validations-challenge
 [wikipedia 301]: https://en.wikipedia.org/wiki/HTTP_301
 
-
-[URI module]: http://www.ruby-doc.org/stdlib-1.9.3/libdoc/uri/rdoc/URI.html
-[custom validations]: http://guides.rubyonrails.org/active_record_validations.html#performing-custom-validations
-[create]: http://apidock.com/rails/ActiveRecord/Base/create/class
-[save]: http://apidock.com/rails/ActiveRecord/Base/save
-[valid invalid]: http://guides.rubyonrails.org/active_record_validations.html#valid-questionmark-and-invalid-questionmark
 
