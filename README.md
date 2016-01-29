@@ -49,6 +49,12 @@ If a user submits an invalid URL, we don't want to provide them with a short URL
 As we've learned in [previous challenges][validations intro challenge], when we attempt to save, create, or update an Active Record object, Active Record will first validate the object.  If any validations fail, the object is invalid, and Active Record will not try to write to the database.  But, for each failing validation, Active Record will note the failure in the object's [errors][].  We should leverage our understanding of validations and errors to update the route handler in which we persist `Url` objects.
 
 
+## Conclusion
+Having completed this challenge, we should be familiar with an Active Record object's life cycle events:  validation, save, update, destroy, etc.  We should be able to set up callbacks that execute when one of these events occur.  In this challenge we added a callback that executed before a `Url` object was saved to gave it a short URL.
+
+We should also be able to provide a good user experience when something fails.  For example, in this challenge we built `Url` objects from user input.  But, we had to account for the fact that sometimes users supply invalid input.  We updated our route handler, so that we were able to inform users if something went wrong and provide an opportunity to correct the issue.
+
+
 [ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html
 [bitly]: http://bitly.com/
 [errors]: http://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errorsactive_record_validations.html#validations-overview-errors
