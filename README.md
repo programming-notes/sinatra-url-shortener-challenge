@@ -49,50 +49,6 @@ If a user submits an invalid URL, we don't want to provide them with a short URL
 As we've learned in [previous challenges][validations intro challenge], when we attempt to save, create, or update an Active Record object, Active Record will first validate the object.  If any validations fail, the object is invalid, and Active Record will not try to write to the database.  But, for each failing validation, Active Record will note the failure in the object's [errors][].  We should leverage our understanding of validations and errors to update the route handler in which we persist `Url` objects.
 
 
-## Optimize Your Learning
-
-### More on Validations, Constraints, and Database Consistency
-
-We often want to put constraints on what sort of data can go into our database.
-This way we can guarantee that all data in the database conforms to certain
-standards, e.g., there are no users missing an email address.  Guarantees of
-this kind &mdash; ensuring that the data in our database is never confusing or
-contradictory or partially changed or otherwise invalid &mdash; are called
-**consistency**.
-
-If we think of this as a fact from Fact Land, these constraints look like:
-
-* A user must have a first\_name
-* A user must have an email
-* Two user's can't have the same email address, or equivalently, each user's email must be unique
-* A Craigslist post's URL must be a valid URL, for some reasonable definition of valid
-
-These facts can be recorded in both SQL Land and in Ruby Land, like this:
-
-<table class="table table-bordered table-striped">
-  <tr>
-    <th>Fact Land</th>
-    <th>SQL Land</th>
-    <th>Ruby Land</th>
-  </tr>
-  <tr>
-    <td>A user must have an email address</td>
-    <td><code>NOT NULL</code> constraint on <code>email</code> field</td>
-    <td><code>validates :email, :presence => true</code></td>
-  </tr>
-  <tr>
-    <td>A user must have a first name</td>
-    <td><code>NOT NULL</code> constraint on <code>first_name</code> field</td>
-    <td><code>validates :first_name, :presence => true</code></td>
-  </tr>
-  <tr>
-    <td>A user's email address must be unique</td>
-    <td><code>UNIQUE INDEX</code> on <code>email</code> field</td>
-    <td><code>validates :email, :uniqueness => true</code></td>
-  </tr>
-</table>
-
-
 ## Resources
 
 * [Bit.ly, a url shortening service][bitly]
