@@ -10,10 +10,6 @@ What happened?  If we open the Network tab of the Developer Tools, and visit the
 While building this web application, our focus is going to be on events related to the life cycle of an Active Record model.  What happens when when an Active Record model is instantiated, saved, validated, etc.?  We'll be using Active Record [callbacks][rails guides callbacks] around these life cycle events to control our objects and their data.
 
 
-### HTTP Status Codes
-Each HTTP transaction must return a status code.  One we're probably familiar with is `404` (Not Found!).  As we building our application, we should investigate which HTTP codes are sent for a static page and for a redirect.  Spend some time getting to know [HTTP status codes][]. It's common to be asked about them in interviews.  It might be easier to memorize them with help from [HTTP status cats][].
-
-
 ## Releases
 ### Release 0: Build the MVP
 ![mvp animation](readme-assets/mvp-animation.gif)  
