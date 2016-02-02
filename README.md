@@ -37,14 +37,15 @@ We need to update our application to maintain a count of how many times it recei
 - update the homepage to display the number of times each short URL was requested ([mockup](readme-assets/counter.png)).
 
 
-### Release 2:  Validate URLs
+### Release 2:  Validate URLs and Handle Errors
 We've received some user feedback saying that our short links are broken, sending users to bad URLs.  We've looked into the issue and noticed that users are supplying incomplete URLs.  For example, the user submits "google.com" rather than "http://google.com".  In other words, the problem is with the user input, but it looks like the problem is on our end, and of course, we need to do something about it.
 
 If a user submits an invalid URL, we don't want to provide them with a short URL; instead, we want to alert them to the problem and provide the opportunity to correct the input (see Figure 2).  To accomplish this, we'll add an [Active Record validation][ActiveRecord validations] to our `Url` model.  There are different approaches to determining what constitutes a valid URL.  For our purposes, we'll say that a valid URL begins with "http://" or "https://".
 
+Add an Active Record validation to the `Url` model to validate that a URL begins with "http://" or "https://".
+
 ![error animation](readme-assets/show-error-animation.gif)  
 *Figure 2*.  Alerting users that a URL is invalid.
-
 
 As we've learned in [previous challenges][validations intro challenge], when we attempt to save, create, or update an Active Record object, Active Record will first validate the object.  If any validations fail, the object is invalid, and Active Record will not try to write to the database.  But, for each failing validation, Active Record will note the failure in the object's [errors][].  We should leverage our understanding of validations and errors to update the route handler in which we persist `Url` objects.
 
